@@ -116,7 +116,7 @@ class GeneratorTests(unittest.TestCase):
 class PasswordVerifierTests(unittest.TestCase):
 
     def test_secret_zip(self):
-        cracker = PasswordVerifier(lambda p : p == 'p@s1', [ 'ab_1' ])
+        cracker = PasswordVerifier([ 'ab_1' ], lambda p : p == 'p@s1')
         self.assertTrue(cracker.is_password('p@s1'))
         password = cracker.try_passwords()
         self.assertEqual('p@s1', password)

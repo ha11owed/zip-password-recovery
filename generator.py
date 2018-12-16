@@ -160,12 +160,12 @@ class PasswordGenerator:
 
 class PasswordVerifier:
 
-    def __init__(self, is_password, password_examples):
-        self.is_password = is_password
+    def __init__(self, password_examples, is_password):
         rules = PasswordRules()
         for example in password_examples:
             rules.learn(example)
         self.generator = PasswordGenerator(rules)
+        self.is_password = is_password
 
     def try_passwords(self):
         gen = self.generator
